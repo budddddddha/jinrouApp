@@ -3,11 +3,11 @@
 // HTMLはここに書く
 
 import React from 'react'
-import Counter from './Counter'
+import CountCONT from '../containers/CountCONT'
 
 const App = () => (
   React.createElement("div", null, 
-    React.createElement(Counter, null)
+    React.createElement(CountCONT, null)
   )
 )
 

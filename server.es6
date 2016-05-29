@@ -6,9 +6,9 @@ import bodyParser from 'body-parser'
 import ejs from 'ejs'
 
 import index from './routes/index'
-import users from './routes/users'
-import create from './routes/create'
-import linebot from './routes/linebot'
+// import users from './routes/users'
+// import create from './routes/create'
+// import linebot from './routes/linebot'
 
 let app = express()
 
@@ -27,9 +27,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'dist/public')))
 
 app.use('/', index)
-app.use('/users', users)
-app.use('/create', create)
-app.use('/linebot/callback', linebot)
+// app.use('/users', users)
+// app.use('/create', create)
+// app.use('/linebot/callback', linebot)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

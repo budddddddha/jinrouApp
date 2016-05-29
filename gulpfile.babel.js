@@ -83,7 +83,7 @@ const destPublicDir = destDir + "public/"
 
 gulp.task('watch', [], () => {
   watch([jsxDir + "**/*.jsx"], () => gulp.start('jsx_es6'))
-  watch([appDir + "server.js"], () => gulp.start('server'))
+  watch([appDir + "server.es6"], () => gulp.start('server'))
   watch([es6Dir + "**/*.js", "!" + es6Dir + "server.js"], () => gulp.start(['es6_es5','_bundle.js']))
   watch([destScriptsDir + 'root.js'], () => gulp.start('_bundle.js'))
   watch([destScriptsDir + 'bundle.js'], () => gulp.start('_bundle.min.js'))

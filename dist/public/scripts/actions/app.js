@@ -5,14 +5,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.increment = increment;
-exports.default = {
-  increment: function increment() {
-    return { type: 'INCREMENT' };
-  }
-};
-function increment() {
+var increment = exports.increment = function increment() {
   return {
     type: 'INCREMENT'
   };
-}
+};
