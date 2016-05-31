@@ -1,4 +1,10 @@
 'use strict';
+// // container:
+// // mapStateToProps(state): 対象コンポーネントのプロパティを生成
+// // mapDispatchToProps(dispatch): dispatch関数を受け取ってプロパティに変換
+// // dispatch(): storeにアクションを流し込む
+// // connect()(COMPONENT): ReduxとReactのコンポーネントを繋ぐ
+//   // これによりreducerにreducer(mapStateToProps, mapDispatchToProps)が渡される
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -18,13 +24,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     countter: state.countter
   };
-}; // 'use strict'
-// // container:
-// // mapStateToProps(state): 対象コンポーネントのプロパティを生成
-// // mapDispatchToProps(dispatch): dispatch関数を受け取ってプロパティに変換
-// // dispatch(): storeにアクションを流し込む
-// // connect()(COMPONENT): ReduxとReactのコンポーネントを繋ぐ
-//   // これによりreducerにreducer(mapStateToProps, mapDispatchToProps)が渡される
+};
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {

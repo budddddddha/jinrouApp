@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 // // container:
 // // mapStateToProps(state): 対象コンポーネントのプロパティを生成
 // // mapDispatchToProps(dispatch): dispatch関数を受け取ってプロパティに変換

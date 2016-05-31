@@ -8,3 +8,10 @@ export const increment = () => {
     type: 'INCREMENT'
   }
 }
+
+export const kaesu = (input) => {
+  return {
+    type: 'KAESU',
+    input
+  }
+}

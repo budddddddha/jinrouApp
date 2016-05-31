@@ -1,8 +1,13 @@
+'use strict'
+
+
 import { combineReducers } from 'redux'
 import countter from './count'
+import oumu from './oumu'
 
 const jinrouApp = combineReducers({
-  countter
+  countter,
+  oumu
 })
 
 export default jinrouApp

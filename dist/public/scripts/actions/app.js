@@ -10,3 +10,10 @@ var increment = exports.increment = function increment() {
     type: 'INCREMENT'
   };
 };
+
+var kaesu = exports.kaesu = function kaesu(input) {
+  return {
+    type: 'KAESU',
+    input: input
+  };
+};
