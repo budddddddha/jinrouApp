@@ -2,7 +2,9 @@ import { createStore } from 'redux'
 import rootReducer from '../reducers'
 
 export default function configureStore(preloadedState) {
-  const store = createStore(rootReducer, preloadedState)
+  const store = createStore(rootReducer, preloadedState,
+    window.devToolsExtension ? window.devToolsExtension(): undefined
+  )
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
