@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes'
 
-export function logIn(id) {
-  return { type: types.LOG_IN, id}
+export function logIn(id, name, password) {
+  return { type: types.LOG_IN, name, password}
 }
 
 export function addTodo(text) {

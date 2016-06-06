@@ -1,5 +1,5 @@
 import gulp from 'gulp'
-import gulpLoadPlugins from 'gulp-load-plugins'
+// import gulpLoadPlugins from 'gulp-load-plugins'
 import react from 'gulp-react'
 import babel from 'gulp-babel'
 import browserify from 'browserify'
@@ -8,10 +8,12 @@ import source from 'vinyl-source-stream'
 import uglify from 'gulp-uglify'
 import rename from "gulp-rename"
 import watch from 'gulp-watch'
+import autoprefixer from "gulp-autoprefixer"
+import sass from "gulp-sass"
 // import browserSync from 'browser-sync'
 
 // const reload = browserSync.reload
-const $ = gulpLoadPlugins()
+// const $ = gulpLoadPlugins()
 
 // ---------- File Path ----------
 // Base Path
@@ -79,6 +81,13 @@ const destPublicDir = destDir + "public/"
     gulp.src(appDir + "server.es6")
       .pipe($.babel({compact: false}))
       .pipe(gulp.dest(appDir))
+  )
+
+  gulp.task("sass_to_css", () =>
+    gulp.src("./index.scss")
+      .pipe(autoprefixer())
+      .pipe(sass({style: "expanded"}))
+      .pipe(gulp.dest('./'))
   )
 
 gulp.task('watch', [], () => {

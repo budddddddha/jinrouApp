@@ -1,25 +1,22 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Header from '../components/Header'
-import Main from '../components/Main'
 import LoginForm from '../components/Login/LoginForm'
 import * as TodoActions from '../actions'
 
-class App extends Component {
+class Login extends Component {
   render() {
     const { auth, actions } = this.props
     return (
       <div>
-        <Header addTodo={actions.addTodo} />
-        <Main />
+        <h1>Login</h1>
         <LoginForm auth={auth} logIn={actions.logIn} />
       </div>
     )
   }
 }
 
-App.propTypes = {
+Login.propTypes = {
   auth: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
@@ -39,4 +36,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Login)

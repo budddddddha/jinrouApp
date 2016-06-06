@@ -11,9 +11,13 @@ function requireAuth(nextState, transition) {
     transition.to('/login', null, { nextPathname: nextState.location.pathname });
 }
 
+// example routes. the nested routes here will replace "this.props.children"
+// in the example above
 export default (
-  <Route path="/" component={App}>
-    <Route path="login" component={Login} />
-    <Route path="logined" component={Logined} onEnter="requireAuth" />
+  <Route path="/" component={ReduxAuth}>
+    <IndexRoute component={Main} />
+    <Route path="alt" component={Alt} />
+    <Route path="login" component={SignIn} />
+    <Route path="account" component={Account} onEnter={requireAuth} />
   </Route>
 )
