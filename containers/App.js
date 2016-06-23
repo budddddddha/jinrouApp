@@ -1,19 +1,23 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Header from '../components/Header'
-import Main from '../components/Main'
-import LoginForm from '../components/Login/LoginForm'
-import * as TodoActions from '../actions'
+import * as AuthActions from '../actions/auth'
+
+// containers
+import Login from './Login'
+
+// components
+  // layouts
+  import Header from '../components/layouts/header/Header'
+
 
 class App extends Component {
   render() {
-    const { auth, actions } = this.props
+    const { auth, children } = this.props
     return (
       <div>
-        <Header addTodo={actions.addTodo} />
-        <Main />
-        <LoginForm auth={auth} logIn={actions.logIn} />
+        <Header auth={auth} />
+        <div id="main">{children}</div>
       </div>
     )
   }
@@ -21,22 +25,15 @@ class App extends Component {
 
 App.propTypes = {
   auth: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(TodoActions, dispatch)
+    auth: state.auth,
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  undefined
 )(App)

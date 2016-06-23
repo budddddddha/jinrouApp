@@ -4,21 +4,21 @@ import { connect } from 'react-redux'
 import * as AuthActions from '../actions/auth'
 
 // components
-  import LoginForm from '../components/Login/LoginForm'
+import LogoutButton from '../components/LogIn/LogoutButton'
 
-class Login extends Component {
+class Logout extends Component {
   render() {
     const { auth, auth_actions } = this.props
     return (
       <div>
-        <h1>Login</h1>
-        <LoginForm auth={auth} logIn={auth_actions.logIn} />
+        <h1>Logout</h1>
+        <LogoutButton auth={auth} logOut={auth_actions.logOut} />
       </div>
     )
   }
 }
 
-Login.propTypes = {
+Logout.propTypes = {
   auth: PropTypes.object.isRequired,
   auth_actions: PropTypes.object.isRequired
 }
@@ -38,4 +38,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(Logout)

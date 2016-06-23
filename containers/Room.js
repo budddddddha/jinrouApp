@@ -3,25 +3,26 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as TodoActions from '../actions'
 
-class Logined extends Component {
+class Room extends Component {
   render() {
-    const { todos, actions } = this.props
+    const { actions, params } = this.props
+    const roomId = params.roomId
     return (
       <div>
-        <h2>Logined</h2>
+        <h2>Room</h2>
+        <p>部屋情報</p>
+        <p>roomId: {roomId}</p>
       </div>
     )
   }
 }
 
-Logined.propTypes = {
-  // todos: PropTypes.array.isRequired,
+Room.propTypes = {
   actions: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
   }
 }
 
@@ -34,4 +35,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Logined)
+)(Room)

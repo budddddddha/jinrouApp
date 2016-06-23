@@ -1,12 +1,13 @@
 header {
-
+	display: block;
+	height: 30px;
 }
 
 header nav {
 	position: fixed;
+	background-color: rgb(240, 240, 240);
 	top: 0;
 	width: 100%;
-	background-color: rgb(240, 240, 240);
 }
 
 header nav ul {
@@ -20,5 +21,8 @@ header nav ul li {
 }
 
 #main {
-	padding: 20px;
+	top: 30px;
+	height: 400px;
+	width: 100%;
+	background-color: rgb(240, 200, 240);
 }
