@@ -1,5 +1,7 @@
-import * as types from '../constants/ActionTypes'
+import * as auth from './auth'
 
-export function logIn(id, name, password) {
-  return { type: types.LOG_IN, name, password}
-}
+const actions = Object.assign(
+  {},
+  auth
+)
+export default actions

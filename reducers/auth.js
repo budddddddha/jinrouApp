@@ -1,28 +1,47 @@
-import { LOG_IN, LOG_OUT } from '../constants/ActionTypes'
+import {
+  FAIL_FETCHING_LOGIN_STATE,
+  FETCH_USER,
+  FAIL_FETCHING_USER,
+  LOG_IN,
+  LOG_OUT
+} from '../constants/ActionTypes'
 
 const initialState = {
-  id: '',
-  name: '',
-  password: '',
-  login: false
-}
+  isPrepared: false,
+  isLoggedIn: false,
+  user: {
+    id: undefined,
+    name: undefined,
+    pass: undefined,
+  },
+  isFetching: false,
+  error: undefined,
+  jwt: ''
+};
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
+    case FAIL_FETCHING_LOGIN_STATE:
+      return Object.assign({}, state, {isPrepared: true})
+    case FETCH_USER:
+      return Object.assign({}, state, {isFetching: true, error: undefined})
+    case FAIL_FETCHING_USER:
+      return Object.assign({}, state, {isFetching: false, error: action.payload.error})
     case LOG_IN:
-      return {
-        id: 1,
-        name: action.name,
-        password: action.password,
-        login: true
-      }
+      return Object.assign({}, state, {
+        isPrepared: true,
+        isLoggedIn: true,
+        user: {
+          id  : action.payload.userData.id,
+          name: action.payload.userData.name,
+          pass: action.payload.userData.pass,
+        },
+        isFetching: false,
+        error: undefined,
+        jwt: action.payload.userData.jwt
+      })
     case LOG_OUT:
-      return {
-        id: 1,
-        name: action.name,
-        password: action.password,
-        login: false
-      }
+      return Object.assign({}, initialState.auth, {isPrepared: true})
     default:
       return state
   }

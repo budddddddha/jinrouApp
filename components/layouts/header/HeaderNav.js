@@ -10,8 +10,7 @@ class HeaderNav extends Component {
   }
 
   render() {
-    console.log("render")
-    console.log("login?",this.state.auth.login)
+    const { auth, handleLogout } = this.props;
     return (
       <nav id="header_nav">
         <ul>
@@ -25,6 +24,9 @@ class HeaderNav extends Component {
           )}
           <li><Link to="/signup">SignUp</Link></li>
           <li><Link to="/signout">SignOut</Link></li>
+          <li>{auth.isLoggedIn &&
+            <button onClick={handleLogout}>Logout</button>
+          }</li>
         </ul>
       </nav>
     )

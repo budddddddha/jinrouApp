@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import auth from './auth'
-import room from './room'
+import village from './village'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
   auth,
-  room,
+  village,
   routing: routerReducer
 })
 

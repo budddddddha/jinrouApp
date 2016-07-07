@@ -1,12 +1,13 @@
-import React, { PropTypes, Component } from 'react'
+import React, { Component, PropTypes } from 'react';
 
 class Index extends Component {
-
   render() {
+    const { auth, handleLogout } = this.props;
+
     return (
-      <div style="background-color: rgb(0, 0, 0)"><div>
-    )
+      <div>Hello.</div>
+    );
   }
 }
 
-export default Index
+export default Index;
