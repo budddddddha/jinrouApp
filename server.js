@@ -27,6 +27,19 @@ const params = {
   Key: { Id: ''}
 }
 
+const createUser = function(item) {
+  const user = {
+    id  : item.Id,
+    name: item.Name,
+    pass: item.Pass,
+    mail: item.Email,
+    gameData: {
+      villages: item.GameData.Villages.values
+    }
+  }
+  return user;
+}
+
 // ログイン処理
 app.post('/api/login', function(req, res) {
 
@@ -42,12 +55,7 @@ app.post('/api/login', function(req, res) {
         mail: userData.Item.Email
       }, secretKey);
 
-      const User = {
-        id  : userData.Item.Id,
-        name: userData.Item.Name,
-        pass: userData.Item.Pass,
-        mail: userData.Item.Email
-      }
+      const User = createUser(userData.Item);
 
       return res.send([Object.assign({}, User, { jsonWebToken })])
 
@@ -77,12 +85,8 @@ app.get('/api/login', function(req, res) {
       const userData = yield dynamoGetUser(params);
 
       if (userData.Item.Id === decode.id) {
-        const User = {
-          id  : userData.Item.Id,
-          name: userData.Item.Name,
-          pass: userData.Item.Pass,
-          mail: userData.Item.Email
-        }
+        const User = createUser(userData.Item);
+        console.log("User",User);
 
         res.send([Object.assign({}, User, { jsonWebToken })])
 

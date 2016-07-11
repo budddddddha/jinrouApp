@@ -17,21 +17,25 @@ class UserOnly extends Component {
   }
 
   guestWillTransfer(props, router) {
-    console.log("props=",props);
-    console.log("router=",router);
     if (!props.auth.isLoggedIn) {
       router.replace('/login');
     }
   }
 
   render() {
-    return <div>{this.props.children}</div>
+    const { children } = this.props
+
+    return (
+      <div id="user_only">
+        <h2>user_only</h2>
+        {this.props.children}
+      </div>
+    )
   }
 }
 
 UserOnly.propTypes = {
   children: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
 };
 
 function select({ auth }) {

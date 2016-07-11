@@ -12,11 +12,15 @@ const initialState = {
   user: {
     id: undefined,
     name: undefined,
-    pass: undefined,
+    pass: undefined
   },
   isFetching: false,
   error: undefined,
-  jwt: ''
+  jwt: '',
+
+  gameData: {
+    villages: []
+  }
 };
 
 export default function auth(state = initialState, action) {
@@ -38,7 +42,10 @@ export default function auth(state = initialState, action) {
         },
         isFetching: false,
         error: undefined,
-        jwt: action.payload.userData.jwt
+        jwt: action.payload.userData.jwt,
+        gameData: {
+          villages: action.payload.userData.gameData.villages
+        }
       })
     case LOG_OUT:
       return Object.assign({}, initialState.auth, {isPrepared: true})
