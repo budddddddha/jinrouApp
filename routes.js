@@ -1,9 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import Logout from './containers/Logout'
 import User from './containers/User'
-import Room from './containers/Room'
 import Village from './containers/Village'
 
 import App from './containers/App'

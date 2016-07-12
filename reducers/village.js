@@ -1,12 +1,12 @@
 import {
-  LOG_IN,
-  LOG_OUT
+  ENTER_VILLAGE
 } from '../constants/ActionTypes'
 
 const initialState = {
   id: undefined,
   master: undefined,
-  members: []
+  members: [],
+  isEnter: false
 }
 
 const member = {
@@ -28,6 +28,15 @@ const member = {
 
 export default function village(state = initialState, action) {
   switch (action.type) {
+    case ENTER_VILLAGE:
+      console.log("ENTER_VILLAGE");
+      console.log("action=",action);
+      return Object.assign({}, state, {
+        id: action.payload.villageData.Id,
+        master: action.payload.villageData.Master,
+        members: action.payload.villageData.Members,
+        isEnter: true
+      })
     default:
       return state
   }

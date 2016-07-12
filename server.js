@@ -8,6 +8,7 @@ var webpackConfig = require('./webpack.config')
 const jwt = require('jsonwebtoken');
 const co = require('co');
 const dynamoGetUser = require('./dynamodb/dynamoGetUser');
+const dynamoGetVillage = require('./dynamodb/dynamoGetVillage');
 const secretKey = config.get('secretKey')
 const Boom = require('boom');
 
@@ -23,7 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const params = {
-  TableName : 'JinrouUser',
+  TableName: 'JinrouUser',
+  Key: { Id: ''}
+}
+
+const villageParams = {
+  TableName: 'JinrouVillage',
   Key: { Id: ''}
 }
 
@@ -98,6 +104,24 @@ app.get('/api/login', function(req, res) {
 
   });
 })
+
+app.post('/api/village', function(req, res) {
+  console.log('/api/village');
+
+  co(function* (){
+    const id = req.body.id;
+    console.log("hori",id);
+    // const pass = req.body.pass;
+    villageParams.Key.Id = id;
+    const villageData = yield dynamoGetVillage(villageParams);
+    console.log("villageData=",villageData);
+
+    if (true) {
+      return res.send(villageData)
+    }
+  });
+})
+
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')

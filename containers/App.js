@@ -38,7 +38,8 @@ class App extends Component {
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  village: PropTypes.object.isRequired
 }
 
 function select({ auth }) {

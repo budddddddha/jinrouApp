@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router'
+import actions from '../../actions/index'
 
 class Index extends Component {
   static get contextTypes() {
@@ -9,9 +10,26 @@ class Index extends Component {
     }
   }
 
+  componentWillMount() {
+    this.guestWillTransfer(this.props, this.context.router);
+  }
+
+  componentWillUpdate(nextProps) {
+    console.log("UP DATE!!!");
+    this.guestWillTransfer(nextProps, this.context.router);
+  }
+
+  guestWillTransfer(props, router) {
+    if (props.village.isEnter) {
+      router.replace(`/village/${props.village.id}`);
+    }
+  }
+
   handleOnClick(villageId) {
-    console.log("click");
-    console.log("villageId=",villageId);
+    this.props.dispatch(actions.fetchVillage({
+      id: villageId
+    }))
+
   }
 
   createVillageLi(villages) {
@@ -24,7 +42,7 @@ class Index extends Component {
   }
 
   render() {
-    const { auth } = this.props
+    const { auth, village } = this.props
 
     return (
       <div id="user_only_index">
@@ -39,11 +57,13 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  village: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
-function select({ auth }) {
-  return { auth };
+function select({ auth, village }) {
+  return { auth, village };
 }
 
 export default connect(select)(Index);
