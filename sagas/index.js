@@ -6,6 +6,7 @@ export default function* rootSaga() {
   yield fork(auth.handleFetchLoginState)
   yield fork(auth.handleLogin)
   yield fork(auth.handleLogout)
-  
+  yield fork(auth.handleSignUp)
+
   yield fork(village.handleFetchVillage)
 }

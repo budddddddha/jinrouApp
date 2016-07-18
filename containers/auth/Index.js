@@ -15,7 +15,6 @@ class Index extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log("UP DATE!!!");
     this.guestWillTransfer(nextProps, this.context.router);
   }
 
@@ -49,7 +48,7 @@ class Index extends Component {
         <h2>user_only_index</h2>
         <p>{auth.user.name}</p>
         <ul>
-          {this.createVillageLi(auth.gameData.villages)}
+          {auth.gameData.villages && this.createVillageLi(auth.gameData.villages)}
         </ul>
       </div>
     )

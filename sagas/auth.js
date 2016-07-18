@@ -6,7 +6,8 @@ import {
   failFetchingUser,
   login,
   clickLogout,
-  logout
+  logout,
+  signup
 } from '../actions/auth'
 import superFetch from '../modules/superFetch'
 
@@ -54,9 +55,10 @@ export function* handleLogin() {
     console.log("payload?!?!=",payload);
     console.log("err=",err);
 
-    if (!payload && err) {
+    if ('err' in payload) {
       console.log("fetchUser ERROR");
-      yield put(failFetchingUser(String(err).split('Error: ')[1]));
+      console.log("hoge",String(payload.err).split('Error: ')[1]);
+      yield put(failFetchingUser(String(payload.err.data.message)));
       continue;
     }
 
@@ -79,5 +81,29 @@ export function* handleLogout() {
     localStorage.removeItem('jwt');
 
     yield put(logout());
+  }
+}
+
+export function* handleSignUp() {
+  while (true) {
+    const action = yield take(`${signup}`)
+
+    console.log("handleSignUp");
+
+    const { payload, err } = yield call(superFetch, {
+      url: '/api/signup/',
+      type: 'POST',
+      data: action.payload
+    });
+    console.log("payload?!?!=",payload);
+    console.log("err=",err);
+
+    const jwt = payload[0].jsonWebToken;
+    console.log("jwt=",jwt);
+    localStorage.setItem('jwt', jwt);
+    const ret = Object.assign({}, payload[0], { jwt })
+    console.log("ret=",ret);
+
+    yield put(login(ret));
   }
 }

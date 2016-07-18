@@ -3,10 +3,9 @@ AWS.config.region = 'ap-northeast-1'
 const dynamo = new AWS.DynamoDB.DocumentClient()
 
 const dynamoGetUser = params => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     dynamo.get(params, (err, data) => {
-      if (err)  reject(err)
-      else      resolve(data)
+      resolve(data)
     })
   })
 }
