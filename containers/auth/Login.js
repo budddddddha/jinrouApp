@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router'
 
 // import { fetchUser } from '../../actions/auth';
 import actions from '../../actions/index'
@@ -46,6 +47,7 @@ class Login extends Component {
 
           {this.renderSubmit()}
         </form>
+        <Link to={'/signup'}>signup</Link>
       </div>
     );
   }
