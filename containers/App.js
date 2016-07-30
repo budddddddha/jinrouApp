@@ -12,6 +12,9 @@ class App extends Component {
   componentWillMount() {
     this.props.dispatch(actions.fetchLoginState())
   }
+  componentWillUpdate(nextProps) {
+    this.props.auth.error = undefined;
+  }
 
   handleLogout() {
     this.props.dispatch(actions.clickLogout())
@@ -42,8 +45,8 @@ App.propTypes = {
   village: PropTypes.object.isRequired
 }
 
-function select({ auth }) {
-  return { auth }
+function select({ auth, village }) {
+  return { auth, village }
 }
 
 export default connect(select)(App)

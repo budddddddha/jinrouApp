@@ -21,6 +21,8 @@ class SignUp extends Component {
         name: target.name.value.trim(),
         mail: target.mail.value.trim()
       }));
+    } else {
+      this.props.dispatch(actions.passwordError('パスワードが一致しません'));
     }
   }
 

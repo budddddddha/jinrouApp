@@ -12,28 +12,8 @@ class Index extends Component {
     }
   }
 
-  componentWillMount() {
-    this.villageWillTransfer(this.props, this.context.router);
-  }
-
-  componentWillUpdate(nextProps) {
-    this.villageWillTransfer(nextProps, this.context.router);
-  }
-
-  villageWillTransfer(props, router) {
-    if (props.village.isEnter) {
-      router.replace(`/village/${props.village.id}`);
-    }
-  }
-
-  enterVillage(villageId) {
-    this.props.dispatch(actions.fetchVillage({
-      id: villageId
-    }))
-  }
-
   render() {
-    const { auth, village } = this.props
+    const { auth, village, dispatch } = this.props
 
     return (
       <div id="user_only_index">
@@ -41,7 +21,7 @@ class Index extends Component {
         <p>{auth.user.name}</p>
         <VillageList
           villages={auth.gameData.villages}
-          onClick={this.enterVillage.bind(this)}
+          dispatch={dispatch}
         />
       </div>
     )

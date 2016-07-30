@@ -19,15 +19,16 @@ class Login extends Component {
   }
 
   renderSubmit() {
-    return this.props.auth.isFetching ? <Loading /> : <input type="submit" value="Send" />;
+    return this.props.auth.isFetching ? <Loading /> : <input type="submit" value="ログイン" />;
   }
 
   render() {
+    console.log("this.props=",this.props);
     const { auth } = this.props;
 
     return (
       <div>
-        <h1>Log in</h1>
+        <h1>ログイン</h1>
 
         <form onSubmit={this.handleSubmit.bind(this)}>
           <ul>
@@ -47,7 +48,7 @@ class Login extends Component {
 
           {this.renderSubmit()}
         </form>
-        <Link to={'/signup'}>signup</Link>
+        <Link to={'/signup'}>サインアップ</Link>
       </div>
     );
   }

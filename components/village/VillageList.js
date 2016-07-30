@@ -6,8 +6,7 @@ class VillageList extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      villages: this.props.villages,
-      onClick: this.props.onClick
+      villages: this.props.villages
     }
   }
 
@@ -17,9 +16,8 @@ class VillageList extends Component {
         {this.state.villages && this.state.villages.map((v,i) => {
           return (
             <VillageItem
-              villageName={v}
+              villageId={v}
               key={i}
-              onClick={this.state.onClick}
             />
           )
         })}

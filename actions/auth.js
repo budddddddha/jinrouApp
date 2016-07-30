@@ -9,3 +9,4 @@ export const failFetchingLoginState = createAction(types.FAIL_FETCHING_LOGIN_STA
 export const fetchUser              = createAction(types.FETCH_USER)
 export const failFetchingUser       = createAction(types.FAIL_FETCHING_USER, (err) => ({error: err}))
 export const signup                 = createAction(types.SIGN_UP)
+export const passwordError          = createAction(types.PASSWORD_ERROR)

@@ -1,30 +1,27 @@
 import React, { PropTypes, Component } from 'react'
+import { Link } from 'react-router'
+
 
 class VillageItem extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      villageName: this.props.villageName,
-      key: this.props.key,
-      onClick: this.props.onClick
+      villageId: this.props.villageId,
+      key: this.props.key
     }
   }
 
   render() {
-    console.log("this.state.villageName");
     return (
-      <li>
-        <button key={this.state.key} onClick={() => {this.state.onClick(this.state.villageName)}}>
-          {this.state.villageName}
-        </button>
+      <li key={this.state.key}>
+        <Link to={`/village/${this.state.villageId}`}>{this.state.villageId}</Link>
       </li>
     )
   }
 }
 
 VillageItem.propTypes = {
-  villageName: PropTypes.string,
-  key: PropTypes.string
+  villageId: PropTypes.string,
 }
 
 export default VillageItem
