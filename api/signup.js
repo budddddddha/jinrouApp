@@ -7,32 +7,13 @@ const dynamoPutUser = require('../dynamodb/dynamoPutUser');
 const dynamoGetUser = require('../dynamodb/dynamoGetUser');
 const Boom = require('boom');
 const fetchJWT = require('../modules/fetchJWT')
+const createUser = require('../modules/createUser')
 
 const vs = new Set(["test"])
 
 const getParams = {
   TableName: 'JinrouUser',
   Key: { Id: ''}
-}
-
-const createUser = function(item) {
-  const user = {
-    id  : item.Id || undefined,
-    name: item.Name || undefined,
-    pass: item.Pass || undefined,
-    mail: item.Email || undefined
-  }
-  user.gameData = {}
-  if ('GameData' in item) {
-    if ('Villages' in item.GameData) {
-      user.gameData.villages = item.GameData.Villages
-    } else {
-      user.gameData.villages = []
-    }
-  } else {
-    user.gameData.villages = []
-  }
-  return user;
 }
 
 const createPutParams = body => {

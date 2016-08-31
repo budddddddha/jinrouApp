@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import actions from '../../actions/index'
 
 import VillageList from '../../components/village/VillageList'
+import FriendList from '../../components/FriendList'
 
 class Index extends Component {
   static get contextTypes() {
@@ -22,6 +23,9 @@ class Index extends Component {
         <VillageList
           villages={auth.gameData.villages}
           dispatch={dispatch}
+        />
+        <FriendList
+          friendList={auth.gameData.friends}
         />
       </div>
     )

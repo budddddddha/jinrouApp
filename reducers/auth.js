@@ -20,6 +20,7 @@ const initialState = {
   jwt: '',
 
   gameData: {
+    friends: [],
     villages: []
   }
 };
@@ -46,6 +47,7 @@ export default function auth(state = initialState, action) {
         error: undefined,
         jwt: action.payload.userData.jwt,
         gameData: {
+          friends: action.payload.userData.gameData.friends,
           villages: action.payload.userData.gameData.villages
         }
       })

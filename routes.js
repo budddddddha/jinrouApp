@@ -3,6 +3,8 @@ import { Route, IndexRoute } from 'react-router'
 
 import User from './containers/User'
 import Village from './containers/Village'
+import MakeVillage from './containers/MakeVillage'
+import Friend from './containers/auth/Friend'
 
 import App from './containers/App'
 import UserOnly from './containers/auth/UserOnly'
@@ -18,6 +20,8 @@ export const getRoutes = store => {
       <Route component={UserOnly}>
         <IndexRoute component={Index} />
         <Route path="village/:villageId" component={Village} />
+        <Route path="makevillage" component={MakeVillage} />
+        <Route path="friend/:friendId" component={Friend} />
       </Route>
       <Route component={GuestOnly}>
         <Route path="login" component={Login} />

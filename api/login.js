@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const dynamoGetUser = require('../dynamodb/dynamoGetUser');
 const Boom = require('boom');
 const fetchJWT = require('../modules/fetchJWT')
+const createUser = require('../modules/createUser')
 
 const config = require('config');
 const secretKey = config.get("secretKey")
@@ -13,26 +14,6 @@ const secretKey = config.get("secretKey")
 const params = {
   TableName: 'JinrouUser',
   Key: { Id: ''}
-}
-
-const createUser = function(item) {
-  const user = {
-    id  : item.Id || undefined,
-    name: item.Name || undefined,
-    pass: item.Pass || undefined,
-    mail: item.Email || undefined
-  }
-  user.gameData = {}
-  if ('GameData' in item) {
-    if ('Villages' in item.GameData) {
-      user.gameData.villages = item.GameData.Villages
-    } else {
-      user.gameData.villages = []
-    }
-  } else {
-    user.gameData.villages = []
-  }
-  return user;
 }
 
 // ログイン処理
