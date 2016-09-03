@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class Main extends Component {
   render() {
-    const { auth, children } = this.props;
+    const { children } = this.props;
 
     return (
       <div id="main">
@@ -13,8 +13,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  auth: PropTypes.object.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired
 };
 
 export default Main;

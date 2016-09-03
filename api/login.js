@@ -66,11 +66,12 @@ router.get('/', function(req, res) {
       params.Key.Id = decode.id
       console.log("decode.id=",decode.id);
       const userData = yield dynamoGetUser(params);
-      console.log("userData=",userData.Item);
+      // console.log("userData=",userData.Item);
 
       if (userData.Item.Id === decode.id) {
         const User = createUser(userData.Item);
-        console.log("User!!!",User);
+        // console.log("User!!!",User);
+        // console.log("userData=",userData.Item);
 
         res.send([Object.assign({}, User, { jsonWebToken })])
       }

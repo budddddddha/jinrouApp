@@ -19,12 +19,14 @@ const login = require('./api/login');
 const signup = require('./api/signup');
 const friend = require('./api/friend');
 const village = require('./api/village');
+const user = require('./api/user');
 
 // api routing
 app.use('/api/login', login);
 app.use('/api/signup', signup);
 app.use('/api/friend', friend);
 app.use('/api/village', village);
+app.use('/api/user', user);
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')

@@ -31,7 +31,6 @@ class App extends Component {
           />
           <Main
             children={children}
-            auth={auth}
           />
         </div>) :
         <Loading />
@@ -42,11 +41,10 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  village: PropTypes.object.isRequired
 }
 
-function select({ auth, village }) {
-  return { auth, village }
+function select({ auth }) {
+  return { auth }
 }
 
 export default connect(select)(App)
