@@ -2,16 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router'
 
-// import { fetchUser } from '../../actions/auth';
 import actions from '../../actions/index'
 import Loading from '../../components/layouts/Loading';
 
 class Login extends Component {
   handleSubmit(e) {
     const target = e.target;
-
     e.preventDefault();
-
     this.props.dispatch(actions.fetchUser({
       id: target.id.value.trim(),
       pass: target.password.value.trim()
@@ -23,7 +20,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log("this.props=",this.props);
     const { auth } = this.props;
 
     return (

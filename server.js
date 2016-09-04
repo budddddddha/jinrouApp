@@ -23,7 +23,6 @@ const signup = require('./api/signup');
 const friend = require('./api/friend');
 const village = require('./api/village');
 const user = require('./api/user');
-const socket = require('./api/socket');
 
 // api routing
 app.use('/api/login', login);
@@ -31,7 +30,6 @@ app.use('/api/signup', signup);
 app.use('/api/friend', friend);
 app.use('/api/village', village);
 app.use('/api/user', user);
-app.use('/api/socket', socket);
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')
@@ -49,29 +47,20 @@ const server = app.listen(port, function(error) {
 const io = SocketIo(server)
 const userSocket = io.of('/socket/user').on('connection', function(socket) {
   const id = socket.id;
-  console.log("socket.id=", id);
-  userSocket.to(id).emit('news', { hello: id });
-  // socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  userSocket.to(id).emit('to_user_msg', { toUserMsg: id });
+  socket.on('from_user_msg', function (data) {
+    console.log("from_user_msg=", data);
   });
 });
 const villageSocket = io.of('/socket/village').on('connection', function(socket) {
   const room = ''
-  socket.on('client_to_server_join', function(data) {
-    console.log("client_to_server_join");
+  socket.on('village_join', function(data) {
+    console.log("village_join");
     room = data.villageId;
     socket.join(room);
     });
-  socket.on('client_to_server_broadcast', function(data) {
-    console.log("client_to_server_broadcast");
-    socket.broadcast.to(room).emit('server_to_client', {value : data.value});
+  socket.on('village_broadcast', function(data) {
+    console.log("village_broadcast");
+    socket.broadcast.to(room).emit('broadcast_to_village_user', {value : data.value});
   })
 });
-
-// io.on('connection', function (socket) {
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('my other event', function (data) {
-//     console.log(data);
-//   });
-// });

@@ -6,11 +6,7 @@ import actions from '../../actions/index'
 import FriendList from '../../components/FriendList'
 
 class Friend extends Component {
-  // static get contextTypes() {
-  //   return {
-  //     router: PropTypes.object.isRequired
-  //   }
-  // }
+
   componentDidMount() {
     console.log("componentDidMount");
     console.log("this.props=",this.props);
@@ -32,7 +28,6 @@ class Friend extends Component {
 }
 
 Friend.propTypes = {
-  // auth: PropTypes.object.isRequired,
   friend: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };

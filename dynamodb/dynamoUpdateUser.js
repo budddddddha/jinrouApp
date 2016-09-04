@@ -7,7 +7,6 @@ var params = {
     Key: {
         "Id": "eee"
     },
-    // createSet(['a', 'b'])
     UpdateExpression: 'set FromRequest = list_append(FromRequest, :fr)',
     ExpressionAttributeValues: {
       ":fr": ["k0408n"]

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const co = require('co');
 const dynamoGetVillage = require('../dynamodb/dynamoGetVillage');
 
@@ -18,29 +17,25 @@ const isExist = function(members, authId) {
   return false;
 }
 
+// 村情報取得
 router.post('/', function(req, res) {
-  console.log("vivivi");
   co(function* (){
     const villageId = req.body.villageId;
     const authId = req.body.authId;
     params.Key.Id = villageId;
-    console.log("params=",params);
     const villageData = yield dynamoGetVillage(params);
-    console.log("villageData=",villageData);
 
+    // エラー処理(村が存在しない)
     if (Object.keys(villageData).length === 0) {
-      console.log("村が存在しない");
       return res.send(villageData)
     }
-    console.log("villageData.Item.Members=",villageData.Item.Members);
-    if (isExist(villageData.Item.Members, authId)) {
-      console.log("OK");
-      return res.send(villageData)
-    } else {
-      console.log("メンバーじゃない");
+
+    // エラー処理(村のメンバーじゃない)
+    if (!isExist(villageData.Item.Members, authId)) {
       return err
     }
-
+    
+    return res.send(villageData)
   });
 })
 

@@ -2,14 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const co = require('co');
-const jwt = require('jsonwebtoken');
 const dynamoGetUser = require('../dynamodb/dynamoGetUser');
 const Boom = require('boom');
-const fetchJWT = require('../modules/fetchJWT')
 const createUser = require('../modules/createUser')
-
-const config = require('config');
-const secretKey = config.get("secretKey")
 
 const params = {
   TableName: 'JinrouUser',
@@ -22,7 +17,6 @@ router.post('/fetch', function(req, res) {
     const id    = req.body.friendId;
     params.Key.Id = id;
     const friendData = yield dynamoGetUser(params);
-    console.log("friendData=",friendData);
 
     // エラー処理
     if (Object.keys(friendData).length === 0) {
@@ -51,7 +45,6 @@ router.get('/fetch', function(req, res) {
     const id    = req.body.friendId;
     params.Key.Id = id;
     const friendData = yield dynamoGetUser(params);
-    console.log("friendData=",friendData);
 
     // エラー処理
     if (Object.keys(friendData).length === 0) {
@@ -67,8 +60,6 @@ router.get('/fetch', function(req, res) {
 
     if (friendData.Item.Id === id) {
       const friendUser = createUser(friendData.Item);
-      console.log("friendUser=",friendUser);
-
       return res.send([Object.assign({}, friendUser)])
     }
   });

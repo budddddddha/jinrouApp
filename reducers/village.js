@@ -27,10 +27,9 @@ const member = {
 // (狂人)
 
 export default function village(state = initialState, action) {
+  console.log("action=",action);
   switch (action.type) {
     case ENTER_VILLAGE:
-      console.log("ENTER_VILLAGE");
-      console.log("action=",action);
       return Object.assign({}, state, {
         id: action.payload.villageData.Id,
         master: action.payload.villageData.Master,

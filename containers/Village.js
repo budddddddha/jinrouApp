@@ -10,11 +10,10 @@ import io from 'socket.io-client';
 class Village extends Component {
   constructor(props, context) {
     super(props, context)
-    console.log("const");
     const village = io('/socket/village');
-    village.emit('client_to_server_join', { villageId: this.props.params.villageId });
-    village.emit("client_to_server_broadcast", {value : "入った"});
-    village.on('server_to_client', function(data) {
+    village.emit('village_join', { villageId: this.props.params.villageId });
+    village.emit("village_broadcast", {value : "入った"});
+    village.on('broadcast_to_village_user', function(data) {
       console.log("data.value=", data.value);
     })
 

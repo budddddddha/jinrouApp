@@ -10,21 +10,12 @@ class MakeVillageForm extends Component {
   }
 
   handleNameChange(e) {
-    this.setState(
-      {
-        name: e.target.value
-      }
-    )
+    this.setState({ name: e.target.value })
   }
 
   handlePasswordChange(e) {
-    this.setState(
-      {
-        password: e.target.value
-      }
-    )
+    this.setState({ password: e.target.value })
   }
-
 
   handleSubmit(e) {
     const name = this.state.name.trim()

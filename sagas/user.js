@@ -8,6 +8,7 @@ import {
 import superFetch from '../modules/superFetch'
 
 export function* handleSearchUser() {
+  console.log("handleSearchUser");
   while (true) {
     const action = yield take(`${searchUser}`)
 
@@ -22,17 +23,14 @@ export function* handleSearchUser() {
 }
 
 export function* handleFriendRequest() {
+  console.log("handleSearchUser");
   while (true) {
     const action = yield take(`${friendRequest}`)
-    console.log("handleFriendRequest123");
-
     const { payload, err } = yield call(superFetch, {
       url: '/api/user/friend_request',
       type: 'POST',
       data: action.payload
     });
-
-    console.log("payload666", payload);
 
     yield put(updateFriendRequest(payload))
   }

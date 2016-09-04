@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
 
-
 class FriendItem extends Component {
   constructor(props, context) {
     super(props, context)

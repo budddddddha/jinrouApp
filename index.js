@@ -6,7 +6,6 @@ import configureStore from './store/configureStore'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-// import 'todomvc-app-css/index.css'
 import './index.css'
 
 const store = configureStore()

@@ -15,17 +15,11 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-  // resolve: {
-    // alias: {
-      // 'socket.io-client': path.join( __dirname, 'socket.io-client', 'socket.io.js' )
-    // }
-  // },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
-    // noParse: [ /socket.io-client/ ],
     loaders: [
       {
         test: /\.js$/,

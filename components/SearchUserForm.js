@@ -5,8 +5,6 @@ class SearchUserForm extends Component {
     super(props, context)
     this.state = {
       id: ''
-      // name: this.props.auth.name || '',
-      // password: this.props.auth.password || ''
     }
   }
 
@@ -26,7 +24,6 @@ class SearchUserForm extends Component {
   }
 
   render() {
-    // console.log(this.props)
     return (
       <form onSubmit={this.handleSubmit.bind()}>
         <input type="text"
@@ -40,11 +37,6 @@ class SearchUserForm extends Component {
       </form>
     )
   }
-}
-
-SearchUserForm.propTypes = {
-  // logIn: PropTypes.func.isRequired,
-  // auth: PropTypes.object.isRequired,
 }
 
 export default SearchUserForm

@@ -3,13 +3,6 @@ import React, { PropTypes, Component } from 'react'
 import MemberItem from './MemberItem'
 
 class MemberList extends Component {
-  // constructor(props, context) {
-  //   super(props, context)
-  //   this.state = {
-  //     villages: this.props.villages,
-  //     onClick: this.props.onClick
-  //   }
-  // }
 
   render() {
     return (

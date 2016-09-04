@@ -23,8 +23,4 @@ class MemberItem extends Component {
   }
 }
 
-// MemberItem.propTypes = {
-  // member: PropTypes.string,
-// }
-
 export default MemberItem

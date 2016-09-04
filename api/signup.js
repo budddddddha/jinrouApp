@@ -2,14 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const co = require('co');
-const jwt = require('jsonwebtoken');
 const dynamoPutUser = require('../dynamodb/dynamoPutUser');
 const dynamoGetUser = require('../dynamodb/dynamoGetUser');
 const Boom = require('boom');
 const fetchJWT = require('../modules/fetchJWT')
 const createUser = require('../modules/createUser')
-
-const vs = new Set(["test"])
 
 const getParams = {
   TableName: 'JinrouUser',
@@ -32,33 +29,24 @@ const createPutParams = body => {
 router.post('/', function(req, res) {
   co(function* (){
     const putParams = createPutParams(req.body)
-    console.log("putParams=",putParams);
-
     const putData = yield dynamoPutUser(putParams);
-    console.log("putData=",putData);
 
     getParams.Key.Id = putParams.Item.Id;
     const userData = yield dynamoGetUser(getParams);
-    console.log("userData=",userData);
 
+    // エラー処理
     if (Object.keys(userData).length === 0) {
       const err = Boom.badImplementation('name or password is not found', {
         message: 'エラーだよ。'
       });
 
       err.output.payload = Object.assign({}, err.output.payload, err.data);
-
       const errobj = {err: err}
-
       return res.send(errobj);
     }
 
     const jsonWebToken = fetchJWT(userData.Item.Id, userData.Item.Email)
-    console.log("jsonWebToken=", jsonWebToken);
-
     const User = createUser(userData.Item);
-    console.log("User=",User);
-
     return res.send([Object.assign({}, User, { jsonWebToken })])
   });
 })

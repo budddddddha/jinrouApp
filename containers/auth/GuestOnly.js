@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-
-
 class GuestOnly extends Component {
   static get contextTypes() {
     return {

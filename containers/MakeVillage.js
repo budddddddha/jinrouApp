@@ -8,7 +8,6 @@ import MakeVillageForm from '../components/village/MakeVillageForm'
 class MakeVillage extends Component {
 
   render() {
-    console.log("render MakeVillage");
     return (
       <div>
         <h2>MakeVillage</h2>

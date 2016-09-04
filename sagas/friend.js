@@ -13,7 +13,7 @@ export function* handleFetchFriend() {
       type: 'POST',
       data: action.payload
     });
-    console.log("payload=", payload);
+
     yield put(updateFriend(payload))
   }
 }

@@ -7,9 +7,9 @@ class UserOnly extends Component {
   constructor() {
     super()
     const user = io('/socket/user');
-    user.on('news', function(data) {
-      console.log("news data=", data);
-      user.emit('my other event', { my: data });
+    user.on('to_user_msg', function(data) {
+      console.log("toUserMsg=", data.toUserMsg);
+      user.emit('from_user_msg', { my: data });
     })
   }
 

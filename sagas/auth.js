@@ -13,13 +13,11 @@ import {
 import superFetch from '../modules/superFetch'
 
 export function* handleFetchLoginState() {
-  console.log("handleFetchLoginState >>>");
+  console.log("handleFetchLoginState");
   while (true) {
     yield take(`${fetchLoginState}`);
 
     const jwt = localStorage.getItem('jwt');
-    console.log("jwt=",jwt);
-
     if (jwt) {
       const { payload, err } = yield call(superFetch, {
         url: '/api/login/',
@@ -30,9 +28,6 @@ export function* handleFetchLoginState() {
           }
         }
       });
-
-      console.log("payload=",payload);
-      console.log("err=",err);
 
       if (payload && !err) {
         yield put(login(Object.assign({}, payload[0], { jwt })));
@@ -45,6 +40,7 @@ export function* handleFetchLoginState() {
 }
 
 export function* handleLogin() {
+  console.log("handleLogin");
   while (true) {
     const action = yield take(`${fetchUser}`);
     const { payload, err } = yield call(superFetch, {
@@ -57,28 +53,22 @@ export function* handleLogin() {
     console.log("err=",err);
 
     if ('err' in payload) {
-      console.log("fetchUser ERROR");
-      console.log("hoge",String(payload.err).split('Error: ')[1]);
       yield put(failFetchingUser(String(payload.err.data.message)));
       continue;
     }
 
     const jwt = payload[0].jsonWebToken;
-    console.log("jwt=",jwt);
-
     localStorage.setItem('jwt', jwt);
-
     const ret = Object.assign({}, payload[0], { jwt })
-    console.log("ret=",ret);
 
     yield put(login(ret));
   }
 }
 
 export function* handleLogout() {
+  console.log("handleLogout");
   while (true) {
     yield take(`${clickLogout}`);
-
     localStorage.removeItem('jwt');
 
     yield put(logout());
@@ -86,30 +76,25 @@ export function* handleLogout() {
 }
 
 export function* handleSignUp() {
+  console.log("handleSignUp");
   while (true) {
     const action = yield take(`${signup}`)
-
-    console.log("handleSignUp");
-
     const { payload, err } = yield call(superFetch, {
       url: '/api/signup/',
       type: 'POST',
       data: action.payload
     });
-    console.log("payload?!?!=",payload);
-    console.log("err=",err);
 
     const jwt = payload[0].jsonWebToken;
-    console.log("jwt=",jwt);
     localStorage.setItem('jwt', jwt);
     const ret = Object.assign({}, payload[0], { jwt })
-    console.log("ret=",ret);
 
     yield put(login(ret));
   }
 }
 
 export function* handleFetchFriends() {
+  console.log("handleFetchFriends");
   while (true) {
     const action = yield take(`${fetchFriends}`)
     const { payload, err } = yield call(superFetch, {

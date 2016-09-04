@@ -16,11 +16,6 @@ class Index extends Component {
     }
   }
 
-  socketSubmit() {
-    e.preventDefault();
-    socket.emit("client_to_server", "from_client");
-  }
-
   renderSubmit() {
     return this.props.user.isFetching ? <Loading /> : <input type="submit" value="検索" />;
   }
@@ -38,10 +33,7 @@ class Index extends Component {
   }
 
   handleFriendRequest(e) {
-    console.log("handleSubmit!!!!!");
     e.preventDefault();
-    console.log("this.props112",this.props);
-
     this.props.dispatch(actions.friendRequest({
       fromId: this.props.auth.user.id,
       toId: this.props.user.user.id
@@ -50,15 +42,10 @@ class Index extends Component {
 
   render() {
     const { auth, user, village, dispatch } = this.props
-    console.log("this.props=",this.props);
 
     return (
       <div id="user_only_index">
         <h2>user_only_index</h2>
-        <p>Socket</p>
-        <form onSubmit={this.socketSubmit}>
-          <input type="submit" value="Socket" />
-        </form>
         <p>UserName: {auth.user.name}</p>
         <p>VillageList</p>
         <VillageList

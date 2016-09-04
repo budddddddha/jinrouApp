@@ -54,7 +54,6 @@ export default function auth(state = initialState, action) {
     case LOG_OUT:
       return Object.assign({}, initialState.auth, {isPrepared: true})
     case PASSWORD_ERROR:
-      console.log("PASSWORD_ERROR");
       return Object.assign({}, state, {isFetching: false, error: action.payload})
     default:
       return state
