@@ -1,7 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import io from 'socket.io-client';
+
 class UserOnly extends Component {
+  constructor() {
+    super()
+    const user = io('/socket/user');
+    user.on('news', function(data) {
+      console.log("news data=", data);
+      user.emit('my other event', { my: data });
+    })
+  }
+
   static get contextTypes() {
     return {
       router: PropTypes.object.isRequired
