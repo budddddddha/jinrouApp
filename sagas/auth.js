@@ -8,7 +8,9 @@ import {
   clickLogout,
   logout,
   signup,
-  fetchFriends
+  fetchFriends,
+  fetchFriend,
+  updateFriend
 } from '../actions/auth'
 import superFetch from '../modules/superFetch'
 
@@ -103,5 +105,18 @@ export function* handleFetchFriends() {
       data: action.payload
     });
     yield put(addFriends())
+  }
+}
+
+export function* handleFetchFriend() {
+  while (true) {
+    const action = yield take(`${fetchFriend}`)
+    const { payload, err } = yield call(superFetch, {
+      url: '/api/friend/fetch',
+      type: 'POST',
+      data: action.payload
+    });
+
+    yield put(updateFriend(payload))
   }
 }

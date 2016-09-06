@@ -11,3 +11,5 @@ export const failFetchingUser       = createAction(types.FAIL_FETCHING_USER, (er
 export const signup                 = createAction(types.SIGN_UP)
 export const passwordError          = createAction(types.PASSWORD_ERROR)
 export const fetchFriends           = createAction(types.FETCH_FRIENDS)
+export const fetchFriend            = createAction(types.FETCH_FRIEND)
+export const updateFriend           = createAction(types.UPDATE_FRIEND)
