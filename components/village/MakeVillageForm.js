@@ -4,8 +4,8 @@ class MakeVillageForm extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      name: this.props.auth.name || '',
-      password: this.props.auth.password || ''
+      name: this.props.client.name || '',
+      password: this.props.client.password || ''
     }
   }
 
@@ -40,8 +40,8 @@ class MakeVillageForm extends Component {
           </li>
         </ul>
 
-        {auth.error &&
-          <p>{auth.error}</p>
+        {client.error &&
+          <p>{client.error}</p>
         }
 
         {this.renderSubmit()}
@@ -52,7 +52,7 @@ class MakeVillageForm extends Component {
 
 MakeVillageForm.propTypes = {
   logIn: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
 }
 
 export default MakeVillageForm

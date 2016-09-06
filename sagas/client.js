@@ -9,7 +9,7 @@ import {
   logout,
   signup,
   fetchFriends
-} from '../actions/auth'
+} from '../actions/client'
 import superFetch from '../modules/superFetch'
 
 export function* handleFetchLoginState() {
@@ -24,7 +24,7 @@ export function* handleFetchLoginState() {
         type: 'GET',
         custom: {
           headers: {
-            authorization: `Bearer ${jwt}`
+            clientorization: `Bearer ${jwt}`
           }
         }
       });

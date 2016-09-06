@@ -26,11 +26,11 @@ class SignUp extends Component {
   }
 
   renderSubmit() {
-    return this.props.auth.isFetching ? <Loading /> : <input type="submit" value="Send" />;
+    return this.props.client.isFetching ? <Loading /> : <input type="submit" value="Send" />;
   }
 
   render() {
-    const { auth } = this.props;
+    const { client } = this.props;
 
     return (
       <div>
@@ -57,8 +57,8 @@ class SignUp extends Component {
             </li>
           </ul>
 
-          {auth.error &&
-            <p>{auth.error}</p>
+          {client.error &&
+            <p>{client.error}</p>
           }
 
           {this.renderSubmit()}
@@ -70,11 +70,11 @@ class SignUp extends Component {
 
 SignUp.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  client: PropTypes.object.isRequired
 };
 
-function select({ auth }) {
-  return { auth };
+function select({ client }) {
+  return { client };
 }
 
 export default connect(select)(SignUp);

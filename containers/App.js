@@ -13,7 +13,7 @@ class App extends Component {
     this.props.dispatch(actions.fetchLoginState())
   }
   componentWillUpdate(nextProps) {
-    this.props.auth.error = undefined;
+    this.props.client.error = undefined;
   }
 
   handleLogout() {
@@ -21,12 +21,12 @@ class App extends Component {
   }
 
   render() {
-    const { auth, children } = this.props
+    const { client, children } = this.props
 
-    return auth.isPrepared ? (
+    return client.isPrepared ? (
         <div>
           <Header
-            auth={auth}
+            client={client}
             handleLogout={this.handleLogout.bind(this)}
           />
           <Main
@@ -40,11 +40,11 @@ class App extends Component {
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
 }
 
-function select({ auth }) {
-  return { auth }
+function select({ client }) {
+  return { client }
 }
 
 export default connect(select)(App)

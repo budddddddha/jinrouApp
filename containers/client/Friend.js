@@ -16,7 +16,7 @@ class Friend extends Component {
   }
 
   render() {
-    const { auth, dispatch } = this.props
+    const { client, dispatch } = this.props
 
     return (
       <div id="Friend">

@@ -24,7 +24,7 @@ class Village extends Component {
     console.log("this.props=",this.props);
     this.props.dispatch(actions.fetchVillage({
       villageId: this.props.params.villageId,
-      authId: this.props.auth.user.id
+      clientId: this.props.client.user.id
     }))
   }
 
@@ -48,11 +48,11 @@ class Village extends Component {
 
 Village.propTypes = {
   dispatch: PropTypes.func.isRequired
-  // auth: PropTypes.object.isRequired
+  // client: PropTypes.object.isRequired
 };
 
-function select({ auth, village }) {
-  return { auth, village };
+function select({ client, village }) {
+  return { client, village };
 }
 
 export default connect(select)(Village);

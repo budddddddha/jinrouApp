@@ -4,14 +4,14 @@ import { Route, IndexRoute } from 'react-router'
 import User from './containers/User'
 import Village from './containers/Village'
 import MakeVillage from './containers/MakeVillage'
-import Friend from './containers/auth/Friend'
+import Friend from './containers/client/Friend'
 
 import App from './containers/App'
-import UserOnly from './containers/auth/UserOnly'
-import GuestOnly from './containers/auth/GuestOnly'
-import Index from './containers/auth/Index'
-import Login from './containers/auth/Login'
-import SignUp from './containers/auth/SignUp'
+import UserOnly from './containers/client/UserOnly'
+import GuestOnly from './containers/client/GuestOnly'
+import Index from './containers/client/Index'
+import Login from './containers/client/Login'
+import SignUp from './containers/client/SignUp'
 
 export const getRoutes = store => {
 
