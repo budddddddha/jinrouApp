@@ -26,9 +26,9 @@ User.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    id: state.auth.id,
-    name: state.auth.name,
-    password: state.auth.password
+    id: state.client.id,
+    name: state.client.name,
+    password: state.client.password
   }
 }
 

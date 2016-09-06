@@ -11,7 +11,7 @@ import {
   fetchFriends,
   fetchFriend,
   updateFriend
-} from '../actions/auth'
+} from '../actions/client'
 import superFetch from '../modules/superFetch'
 
 export function* handleFetchLoginState() {

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchUser } from '../../actions/auth';
+import { fetchUser } from '../../actions/client';
 import Loading from '../../components/Loading';
 
 class Login extends Component {
@@ -17,11 +17,11 @@ class Login extends Component {
   }
 
   renderSubmit() {
-    return this.props.auth.isFetching ? <Loading /> : <input type="submit" value="Send" />;
+    return this.props.client.isFetching ? <Loading /> : <input type="submit" value="Send" />;
   }
 
   render() {
-    const { auth } = this.props;
+    const { client } = this.props;
 
     return (
       <div>
@@ -39,8 +39,8 @@ class Login extends Component {
             </li>
           </ul>
 
-          {auth.error &&
-            <p>{auth.error}</p>
+          {client.error &&
+            <p>{client.error}</p>
           }
 
           {this.renderSubmit()}
@@ -52,11 +52,11 @@ class Login extends Component {
 
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  client: PropTypes.object.isRequired
 };
 
-function select({ auth }) {
-  return { auth };
+function select({ client }) {
+  return { client };
 }
 
 export default connect(select)(Login);

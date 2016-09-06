@@ -35,25 +35,25 @@ class Index extends Component {
   handleFriendRequest(e) {
     e.preventDefault();
     this.props.dispatch(actions.friendRequest({
-      fromId: this.props.auth.user.id,
+      fromId: this.props.client.user.id,
       toId: this.props.user.user.id
     }));
   }
 
   render() {
-    const { auth, user, village, dispatch } = this.props
+    const { client, user, village, dispatch } = this.props
 
     return (
       <div id="user_only_index">
         <h2>user_only_index</h2>
-        <p>UserName: {auth.user.name}</p>
+        <p>UserName: {client.user.name}</p>
         <p>VillageList</p>
         <VillageList
-          villages={auth.gameData.villages}
+          villages={client.gameData.villages}
         />
         <p>FriendList</p>
         <FriendList
-          friendList={auth.gameData.friends}
+          friendList={client.gameData.friends}
         />
         <form onSubmit={this.handleSubmit.bind(this)}>
           <ul>
@@ -66,7 +66,7 @@ class Index extends Component {
         </form>
         <SearchUserItem
           user={user.user}
-          auth={auth}
+          client={client}
           handleFriendRequest={this.handleFriendRequest.bind(this)}
         />
       </div>
@@ -75,14 +75,14 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-  auth: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired,
   village: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-function select({ auth, village, user }) {
-  return { auth, village, user };
+function select({ client, village, user }) {
+  return { client, village, user };
 }
 
 export default connect(select)(Index);

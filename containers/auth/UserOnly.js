@@ -28,7 +28,7 @@ class UserOnly extends Component {
   }
 
   guestWillTransfer(props, router) {
-    if (!props.auth.isLoggedIn) {
+    if (!props.client.isLoggedIn) {
       router.replace('/login');
     }
   }
@@ -49,8 +49,8 @@ UserOnly.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-function select({ auth }) {
-  return { auth };
+function select({ client }) {
+  return { client };
 }
 
 export default connect(select)(UserOnly);
