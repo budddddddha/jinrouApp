@@ -1,4 +1,4 @@
-// client
+// auth
 export const LOG_IN = 'LOG_IN'
 export const CLICK_LOG_OUT = 'CLICK_LOG_OUT'
 export const LOG_OUT = 'LOG_OUT'

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import client from './client'
+import auth from './auth'
 import friend from './friend'
 import user from './user'
 import village from './village'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
-  client,
+  auth,
   friend,
   user,
   village,

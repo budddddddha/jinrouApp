@@ -20,11 +20,11 @@ class MakeVillage extends Component {
 
 MakeVillage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  client: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
 };
 
-function select({ client }) {
-  return { client };
+function select({ auth }) {
+  return { auth };
 }
 
 export default connect(select)(MakeVillage);

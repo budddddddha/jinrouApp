@@ -1,15 +1,15 @@
 import { fork } from 'redux-saga/effects'
-import * as client from './client'
+import * as auth from './auth'
 import * as friend from './friend'
 import * as user from './user'
 import * as village from './village'
 
 export default function* rootSaga() {
-  // client
-  yield fork(client.handleFetchLoginState)
-  yield fork(client.handleLogin)
-  yield fork(client.handleLogout)
-  yield fork(client.handleSignUp)
+  // auth
+  yield fork(auth.handleFetchLoginState)
+  yield fork(auth.handleLogin)
+  yield fork(auth.handleLogout)
+  yield fork(auth.handleSignUp)
 
   // friend
   yield fork(friend.handleFetchFriend)

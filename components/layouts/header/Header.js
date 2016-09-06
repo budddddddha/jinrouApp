@@ -4,11 +4,11 @@ import HeaderNav from './HeaderNav'
 class Header extends Component {
 
   render() {
-    const { client, handleLogout } = this.props;
+    const { auth, handleLogout } = this.props;
     return (
       <header>
         <HeaderNav
-          client={client}
+          auth={auth}
           handleLogout={handleLogout}
         />
       </header>

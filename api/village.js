@@ -8,9 +8,9 @@ const params = {
   Key: { Id: ''}
 }
 
-const isExist = function(members, clientId) {
+const isExist = function(members, authId) {
   for (var i = 0; i < members.length; i++) {
-    if (clientId === members[i].Id) {
+    if (authId === members[i].Id) {
       return true;
     }
   }
@@ -21,7 +21,7 @@ const isExist = function(members, clientId) {
 router.post('/', function(req, res) {
   co(function* (){
     const villageId = req.body.villageId;
-    const clientId = req.body.clientId;
+    const authId = req.body.authId;
     params.Key.Id = villageId;
     const villageData = yield dynamoGetVillage(params);
 
@@ -31,10 +31,10 @@ router.post('/', function(req, res) {
     }
 
     // エラー処理(村のメンバーじゃない)
-    if (!isExist(villageData.Item.Members, clientId)) {
+    if (!isExist(villageData.Item.Members, authId)) {
       return err
     }
-
+    
     return res.send(villageData)
   });
 })

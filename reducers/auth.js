@@ -25,7 +25,7 @@ const initialState = {
   }
 };
 
-export default function client(state = initialState, action) {
+export default function auth(state = initialState, action) {
   console.log("action=",action);
   switch (action.type) {
     case FAIL_FETCHING_LOGIN_STATE:
@@ -52,7 +52,7 @@ export default function client(state = initialState, action) {
         }
       })
     case LOG_OUT:
-      return Object.assign({}, initialState.client, {isPrepared: true})
+      return Object.assign({}, initialState.auth, {isPrepared: true})
     case PASSWORD_ERROR:
       return Object.assign({}, state, {isFetching: false, error: action.payload})
     default:

@@ -17,7 +17,7 @@ class GuestOnly extends Component {
   }
 
   userWillTransfer(props, router) {
-    if (props.client.isLoggedIn) {
+    if (props.auth.isLoggedIn) {
       router.replace('/');
     }
   }
@@ -29,11 +29,11 @@ class GuestOnly extends Component {
 
 GuestOnly.propTypes = {
   children: PropTypes.object.isRequired,
-  client: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
 };
 
-function select({ client }) {
-  return { client };
+function select({ auth }) {
+  return { auth };
 }
 
 export default connect(select)(GuestOnly);
