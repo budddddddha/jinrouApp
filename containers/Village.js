@@ -24,7 +24,16 @@ class Village extends Component {
     console.log("this.props=",this.props);
     this.props.dispatch(actions.fetchVillage({
       villageId: this.props.params.villageId,
-      clientId: this.props.client.user.id
+      clientId: this.props.client.accountData.id
+    }))
+  }
+
+  componentWillMount() {
+    console.log("componentDidMount");
+    console.log("this.props=",this.props);
+    this.props.dispatch(actions.fetchVillage({
+      villageId: this.props.params.villageId,
+      clientId: this.props.client.accountData.id
     }))
   }
 
@@ -32,6 +41,9 @@ class Village extends Component {
     console.log("render Village");
     const villageId = this.props.params.villageId
     const { village } = this.props;
+    console.log("this.props=", this.props);
+    console.log("village.mambers=", village.mambers);
+    console.log("member!!!!=", this.props.village.members);
     return (
       <div>
         <h2>Village</h2>
@@ -39,7 +51,7 @@ class Village extends Component {
         <p>villageId: {villageId}</p>
         <p>viID: {village.id}</p>
         <MemberList
-          members={village.members}
+          members={this.props.village.members}
         />
       </div>
     )

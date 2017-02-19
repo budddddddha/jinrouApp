@@ -2,8 +2,8 @@ import { take, call, put } from 'redux-saga/effects'
 import {
   fetchLoginState,
   failFetchingLoginState,
-  fetchUser,
-  failFetchingUser,
+  fetchClient,
+  failFetchingClient,
   login,
   clickLogout,
   logout,
@@ -44,7 +44,7 @@ export function* handleFetchLoginState() {
 export function* handleLogin() {
   console.log("handleLogin");
   while (true) {
-    const action = yield take(`${fetchUser}`);
+    const action = yield take(`${fetchClient}`);
     const { payload, err } = yield call(superFetch, {
       url: '/api/login/',
       type: 'POST',
@@ -55,7 +55,7 @@ export function* handleLogin() {
     console.log("err=",err);
 
     if ('err' in payload) {
-      yield put(failFetchingUser(String(payload.err.data.message)));
+      yield put(failFetchingClient(String(payload.err.data.message)));
       continue;
     }
 

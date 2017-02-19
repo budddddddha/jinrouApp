@@ -1,51 +1,49 @@
 import {
   FAIL_FETCHING_LOGIN_STATE,
-  FETCH_USER,
-  FAIL_FETCHING_USER,
+  FETCH_CLIENT,
+  FAIL_FETCHING_CLIENT,
   LOG_IN,
   LOG_OUT,
   PASSWORD_ERROR
 } from '../constants/ActionTypes'
 
 const initialState = {
-  isPrepared: false,
-  isLoggedIn: false,
-  user: {
-    id: undefined,
-    name: undefined,
-    pass: undefined
-  },
-  isFetching: false,
+  // View
   error: undefined,
-  jwt: '',
+  isPrepared: false,
+  isFetching: false,
+  isLoggedIn: false,
 
+  // DB
+  accountData: {
+    id: undefined,
+    name: undefined
+  },
   gameData: {
     friends: [],
     villages: []
   }
 };
 
-export default function auth(state = initialState, action) {
+export default function client(state = initialState, action) {
   console.log("action=",action);
   switch (action.type) {
     case FAIL_FETCHING_LOGIN_STATE:
       return Object.assign({}, state, {isPrepared: true})
-    case FETCH_USER:
+    case FETCH_CLIENT:
       return Object.assign({}, state, {isFetching: true, error: undefined})
-    case FAIL_FETCHING_USER:
+    case FAIL_FETCHING_CLIENT:
       return Object.assign({}, state, {isFetching: false, error: action.payload.error})
     case LOG_IN:
       return Object.assign({}, state, {
         isPrepared: true,
         isLoggedIn: true,
-        user: {
+        accountData: {
           id  : action.payload.userData.id,
           name: action.payload.userData.name,
-          pass: action.payload.userData.pass,
         },
         isFetching: false,
         error: undefined,
-        jwt: action.payload.userData.jwt,
         gameData: {
           friends: action.payload.userData.gameData.friends,
           villages: action.payload.userData.gameData.villages

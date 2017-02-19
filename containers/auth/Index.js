@@ -17,7 +17,7 @@ class Index extends Component {
   }
 
   renderSubmit() {
-    return this.props.user.isFetching ? <Loading /> : <input type="submit" value="検索" />;
+    return this.props.searchUser.isFetching ? <Loading /> : <input type="submit" value="検索" />;
   }
 
   handleSubmit(e) {
@@ -35,18 +35,19 @@ class Index extends Component {
   handleFriendRequest(e) {
     e.preventDefault();
     this.props.dispatch(actions.friendRequest({
-      fromId: this.props.client.user.id,
-      toId: this.props.user.user.id
+      fromId: this.props.client.accountData.id,
+      toId: this.props.searchUser.accountData.id
     }));
   }
 
   render() {
-    const { client, user, village, dispatch } = this.props
+    const { client, searchUser, village, dispatch } = this.props
 
     return (
       <div id="user_only_index">
         <h2>user_only_index</h2>
-        <p>UserName: {client.user.name}</p>
+        <p>UserName: {client.accountData.name}</p>
+        <Link to={"/makevillage"}>makevillage</Link>
         <p>VillageList</p>
         <VillageList
           villages={client.gameData.villages}
@@ -65,7 +66,7 @@ class Index extends Component {
           </ul>
         </form>
         <SearchUserItem
-          user={user.user}
+          searchUser={searchUser}
           client={client}
           handleFriendRequest={this.handleFriendRequest.bind(this)}
         />
@@ -77,12 +78,12 @@ class Index extends Component {
 Index.propTypes = {
   client: PropTypes.object.isRequired,
   village: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
+  searchUser: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-function select({ client, village, user }) {
-  return { client, village, user };
+function select({ client, village, searchUser }) {
+  return { client, village, searchUser };
 }
 
 export default connect(select)(Index);

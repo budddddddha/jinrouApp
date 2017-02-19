@@ -8,8 +8,8 @@ class SearchUserItem extends Component {
     return (
       <div>
         <p>SearchUserItem</p>
-        <p>Id: {this.props.user.id}</p>
-        <p>Name: {this.props.user.name}</p>
+        <p>Id: {this.props.searchUser.accountData.id}</p>
+        <p>Name: {this.props.searchUser.accountData.name}</p>
         <form onSubmit={this.handleSubmit}>
           <input type="button"
             value="友達申請"

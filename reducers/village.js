@@ -1,12 +1,15 @@
 import {
-  ENTER_VILLAGE
+  ENTER_VILLAGE,
+  MADE_VILLAGE
 } from '../constants/ActionTypes'
 
 const initialState = {
   id: undefined,
   master: undefined,
   members: [],
-  isEnter: false
+  isEnter: false,
+  stage: '',
+  isMade: false
 }
 
 const member = {
@@ -35,6 +38,13 @@ export default function village(state = initialState, action) {
         master: action.payload.villageData.Master,
         members: action.payload.villageData.Members,
         isEnter: true
+      })
+    case MADE_VILLAGE:
+      return Object.assign({}, state, {
+        id: action.payload.villageData.Id,
+        members: Array.from(action.payload.villageData.Members.values),
+        stage: action.payload.villageData.Stage,
+        isMade: true
       })
     default:
       return state

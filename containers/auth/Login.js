@@ -9,7 +9,7 @@ class Login extends Component {
   handleSubmit(e) {
     const target = e.target;
     e.preventDefault();
-    this.props.dispatch(actions.fetchUser({
+    this.props.dispatch(actions.fetchClient({
       id: target.id.value.trim(),
       pass: target.password.value.trim()
     }));

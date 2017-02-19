@@ -15,7 +15,7 @@ class MemberItem extends Component {
     return (
       <li key={this.state.key}>
         <ul>
-          <li key={this.state.member.Name}>Name: {this.state.member.Name}</li>
+          <li key={this.state.member.Id}>Name: {this.state.member.Id}</li>
           <li key={this.state.member.Role}>Role: {this.state.member.Role}</li>
         </ul>
       </li>

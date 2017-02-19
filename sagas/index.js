@@ -1,6 +1,6 @@
 import { fork } from 'redux-saga/effects'
 import * as client from './client'
-import * as user from './user'
+import * as searchUser from './searchUser'
 import * as village from './village'
 
 export default function* rootSaga() {
@@ -11,10 +11,11 @@ export default function* rootSaga() {
   yield fork(client.handleSignUp)
   yield fork(client.handleFetchFriend)
 
-  // user
-  yield fork(user.handleSearchUser)
-  yield fork(user.handleFriendRequest)
+  // searchUser
+  yield fork(searchUser.handleSearchUser)
+  yield fork(searchUser.handleFriendRequest)
 
   // village
   yield fork(village.handleFetchVillage)
+  yield fork(village.handleMakeVillage)
 }
