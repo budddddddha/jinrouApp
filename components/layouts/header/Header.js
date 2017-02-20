@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * ヘッダー
+ */
+
 import React, { PropTypes, Component } from 'react'
 import HeaderNav from './HeaderNav'
 

@@ -27,7 +27,7 @@ export function* handleFriendRequest() {
   while (true) {
     const action = yield take(`${friendRequest}`)
     const { payload, err } = yield call(superFetch, {
-      url: '/api/search_user',
+      url: '/api/search_user/friend_request',
       type: 'POST',
       data: action.payload
     });

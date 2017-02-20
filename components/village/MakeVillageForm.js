@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * 村作成フォーム
+ */
+
 import React, { PropTypes, Component } from 'react'
 
 class MakeVillageForm extends Component {

@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * ユーザ情報
+ */
+
 import React, { PropTypes, Component } from 'react'
 
 class UserInfo extends Component {

@@ -1,6 +1,10 @@
+/**
+ * <コンポーネント>
+ * 村アイテム
+ */
+
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
-
 
 class VillageItem extends Component {
   constructor(props, context) {
