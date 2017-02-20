@@ -1,3 +1,8 @@
+/**
+ * <コンテナ>
+ * ユーザ情報
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'

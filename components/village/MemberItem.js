@@ -1,6 +1,10 @@
+/**
+ * <コンポーネント>
+ * メンバーアイテム
+ */
+
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
-
 
 class MemberItem extends Component {
   constructor(props, context) {

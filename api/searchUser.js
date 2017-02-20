@@ -54,31 +54,45 @@ router.post('/friend_request', function(req, res) {
     const fromId = req.body.fromId;
     const toId = req.body.toId;
 
-    // 友達申請の申し込み
-    const requestParams = Object.assign({}, updateParams, {
-      Key: {
-        Id: fromId
-      },
-      UpdateExpression: "add GameData.ToFriendRequests :v",
-      ExpressionAttributeValues: {
-        ":v": dynamo.createSet([toId])
-      }
-    });
+    // 相手が友達申請していたら -> 友達成立
+    params.Key.Id = fromId;
+    const hogeparams = {
+      "TableName": "JinrouUser",
+      "Key": { "Id": fromId}
+    }
+    const fromUserData = yield dynamoGetUser(hogeparams);
+    return res.send(fromUserData);
 
-    // 友達申請の受け取り
-    const requestedParams = Object.assign({}, updateParams, {
-      Key: {
-        Id: toId
-      },
-      UpdateExpression: "add GameData.FromFriendRequests :v",
-      ExpressionAttributeValues: {
-        ":v": dynamo.createSet([fromId])
-      }
-    });
-
-    const request = yield dynamoAddSetUser(requestParams);
-    const requested = yield dynamoAddSetUser(requestedParams);
-    return res.send("")
+    // params.Key.Id = toId;
+    // const toUserData = yield dynamoGetUser(params);
+    // console.log("toUserData=", toUserData);
+    // return res.send(toUserData);
+    //
+    // // 友達申請の申し込み
+    // const requestParams = Object.assign({}, updateParams, {
+    //   Key: {
+    //     Id: fromId
+    //   },
+    //   UpdateExpression: "add GameData.ToFriendRequests :v",
+    //   ExpressionAttributeValues: {
+    //     ":v": dynamo.createSet([toId])
+    //   }
+    // });
+    //
+    // // 友達申請の受け取り
+    // const requestedParams = Object.assign({}, updateParams, {
+    //   Key: {
+    //     Id: toId
+    //   },
+    //   UpdateExpression: "add GameData.FromFriendRequests :v",
+    //   ExpressionAttributeValues: {
+    //     ":v": dynamo.createSet([fromId])
+    //   }
+    // });
+    //
+    // const request = yield dynamoAddSetUser(requestParams);
+    // const requested = yield dynamoAddSetUser(requestedParams);
+    // return res.send("");
   })
 })
 

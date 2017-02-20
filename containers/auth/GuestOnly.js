@@ -1,3 +1,9 @@
+/**
+ * <コンテナ>
+ * ログイン
+ * ログイン済みの場合、ログイン後のページに飛ばす
+ */
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 

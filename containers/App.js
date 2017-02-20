@@ -1,3 +1,9 @@
+/**
+ * <コンテナ>
+ * ベースコンテナ
+ * 主に認証処理を記述
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 

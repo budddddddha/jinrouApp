@@ -1,3 +1,10 @@
+/**
+ * <コンテナ>
+ * ルーティングの設定
+ * プロバイダー(react-redux)に store を渡す
+ * reactルーターに履歴(history)とルーティング情報(getRoytes(store))を渡す
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
