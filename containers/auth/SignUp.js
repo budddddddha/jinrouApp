@@ -1,3 +1,8 @@
+/**
+ * <コンテナ>
+ * ユーザ登録(サインアップ)
+ */
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 

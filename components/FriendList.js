@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * 友達一覧
+ */
+
 import React, { PropTypes, Component } from 'react'
 import FriendItem from './FriendItem'
 

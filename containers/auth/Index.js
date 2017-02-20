@@ -1,3 +1,9 @@
+/**
+ * <コンテナ>
+ * ログイン後に表示するユーザトップ
+ * TODO authディレクトリからuserディレクトリに移すべき
+ */
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router'

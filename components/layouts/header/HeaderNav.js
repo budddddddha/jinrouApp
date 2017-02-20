@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * ヘッダーナビゲーション
+ */
+
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
 

@@ -1,16 +1,17 @@
+/**
+ * サーバ側のエントリー
+ */
+
+// webpack
 var webpack = require('webpack')
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
 var webpackConfig = require('./webpack.config')
 
-var bodyParser = require('body-parser');
-
+// アプリの設定
 var app = new (require('express'))()
-var port = 3000
-
-var SocketIo = require('socket.io');
-
 var compiler = webpack(webpackConfig)
+var bodyParser = require('body-parser')
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
 app.use(bodyParser.json());
@@ -30,11 +31,12 @@ app.use('/api/signup', signup);
 app.use('/api/friend', friend);
 app.use('/api/village', village);
 app.use('/api/search_user', searchUser);
-
 app.get("*", function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
 
+// 起動
+var port = 3000
 const server = app.listen(port, function(error) {
   if (error) {
     console.error(error)
@@ -43,7 +45,8 @@ const server = app.listen(port, function(error) {
   }
 })
 
-// Socket
+// SocketIo
+var SocketIo = require('socket.io');
 const io = SocketIo(server)
 const userSocket = io.of('/socket/user').on('connection', function(socket) {
   const id = socket.id;

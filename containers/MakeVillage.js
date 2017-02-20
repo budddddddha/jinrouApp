@@ -1,3 +1,9 @@
+/**
+ * <コンテナ>
+ * 村を作成
+ * 村ID入力と友達(複数)を招待
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'

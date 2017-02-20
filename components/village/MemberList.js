@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * メンバー一覧
+ */
+
 import React, { PropTypes, Component } from 'react'
 
 import MemberItem from './MemberItem'

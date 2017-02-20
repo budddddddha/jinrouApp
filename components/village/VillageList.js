@@ -1,3 +1,8 @@
+/**
+ * <コンポーネント>
+ * 村一覧
+ */
+
 import React, { PropTypes, Component } from 'react'
 
 import VillageItem from './VillageItem'
