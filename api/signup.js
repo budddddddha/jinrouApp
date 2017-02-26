@@ -1,3 +1,8 @@
+/**
+ * <API>
+ * URL: /api/signup
+ */
+
 const express = require('express');
 const router = express.Router();
 
