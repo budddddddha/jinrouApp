@@ -1,3 +1,8 @@
+/**
+ * <API>
+ * URL: /api/village
+ */
+
 const express = require('express');
 const router = express.Router();
 const co = require('co');
