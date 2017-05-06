@@ -25,9 +25,11 @@ const props = {
   }
 }
 
+const tableName = 'JinrouUser'
+
 class JinrouUser extends Base {
   constructor() {
-    super(props);
+    super(props, tableName);
   }
 }
 
