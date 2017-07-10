@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import actions from '../actions/index'
+import actions from '../../actions/index'
 
-import MakeVillageForm from '../components/village/MakeVillageForm'
-import MasterOption from '../components/MasterOption'
+import MakeVillageForm from '../../components/village/MakeVillageForm'
+import MasterOption from '../../components/MasterOption'
 
 class ConfVillage extends Component {
   // constructor(props, context) {

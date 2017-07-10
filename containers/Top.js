@@ -1,21 +1,20 @@
 /**
  * <コンテナ>
- * ログイン後に表示するユーザトップ
- * TODO authディレクトリからuserディレクトリに移すべき
+ * トップページ
  */
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router'
-import actions from '../../actions/index'
+import actions from '../actions/index'
 
-import VillageList from '../../components/village/VillageList'
-import FriendList from '../../components/FriendList'
-import SearchUserForm from '../../components/SearchUserForm'
-import Loading from '../../components/layouts/Loading'
-import SearchUserItem from '../../components/SearchUserItem'
+import VillageList from '../components/village/VillageList'
+import FriendList from '../components/FriendList'
+import SearchUserForm from '../components/SearchUserForm'
+import Loading from '../components/layouts/Loading'
+import SearchUserItem from '../components/SearchUserItem'
 
-class Index extends Component {
+class Top extends Component {
   static get contextTypes() {
     return {
       router: PropTypes.object.isRequired
@@ -81,7 +80,7 @@ class Index extends Component {
   }
 }
 
-Index.propTypes = {
+Top.propTypes = {
   client: PropTypes.object.isRequired,
   village: PropTypes.object.isRequired,
   searchUser: PropTypes.object.isRequired,
@@ -92,4 +91,4 @@ function select({ client, village, searchUser }) {
   return { client, village, searchUser };
 }
 
-export default connect(select)(Index);
+export default connect(select)(Top);

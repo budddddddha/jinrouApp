@@ -11,6 +11,7 @@ import actions from '../actions/index'
 
 // layouts
 import Header from '../components/layouts/header/Header'
+import Side from '../components/layouts/Side'
 import Main from '../components/layouts/Main'
 import Loading from '../components/layouts/Loading'
 
@@ -30,7 +31,9 @@ class App extends Component {
     const { client, children } = this.props
 
     return client.isPrepared ? (
-        <div>
+        <div id="hoge">
+          <Side
+          />
           <Header
             client={client}
             handleLogout={this.handleLogout.bind(this)}

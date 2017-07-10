@@ -6,9 +6,9 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import actions from '../actions/index'
+import actions from '../../actions/index'
 
-import MemberList from '../components/village/MemberList'
+import MemberList from '../../components/village/MemberList'
 
 import io from 'socket.io-client';
 
